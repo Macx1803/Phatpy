@@ -1,0 +1,25 @@
+from datetime import date
+
+def tinh_khoang_cach_ngay():
+    print("Nhập ngày thứ nhất:")
+    d1 = int(input("Ngày: "))
+    m1 = int(input("Tháng: "))
+    y1 = int(input("Năm: "))
+
+    print("\nNhập ngày thứ hai:")
+    d2 = int(input("Ngày: "))
+    m2 = int(input("Tháng: "))
+    y2 = int(input("Năm: "))
+
+    # Tạo đối tượng date cho 2 mốc thời gian
+    ngay_1 = date(y1, m1, d1)
+    ngay_2 = date(y2, m2, d2)
+
+    # Tính hiệu số giữa 2 ngày
+    # Sử dụng abs() để đảm bảo kết quả luôn dương dù bạn nhập ngày nào trước
+    khoang_cach = abs((ngay_2 - ngay_1).days)
+
+    print(f"\nSố ngày cách nhau giữa 2 ngày là: {khoang_cach} ngày")
+
+# Chạy chương trình
+tinh_khoang_cach_ngay()
