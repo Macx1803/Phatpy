@@ -12,3 +12,7 @@ kiem_tra_boi = lambda n : n % 13 ==0 or n % 19 ==0
 print(kiem_tra_boi(26))
 print(kiem_tra_boi(19))
 print(kiem_tra_boi(20))
+
+import math
+dien_tich_htron =lambda r: math.pi *(r ** 2)
+print(dien_tich_htron(5))
