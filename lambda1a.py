@@ -7,3 +7,8 @@ print(cong_15(10))
 
 tinh_tich = lambda x,y : x*y
 print(tinh_tich(5,6))
+
+kiem_tra_boi = lambda n : n % 13 ==0 or n % 19 ==0
+print(kiem_tra_boi(26))
+print(kiem_tra_boi(19))
+print(kiem_tra_boi(20))
