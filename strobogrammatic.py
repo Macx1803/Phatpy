@@ -1,3 +1,4 @@
+import math
 def helper  (n,max_len):
     if n==0:
         return [""]
@@ -29,15 +30,35 @@ def tim_strobogrammatic(max_digits):
                 all_number.append(s)
     return all_number
 
+def is_prime(n):
+    if n < 2:
+        return False
+    if n in (2, 3):
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    
+    # Kiểm tra các ước số dạng 6k +/- 1
+    for i in range(5, int(math.sqrt(n)) + 1, 6):
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+    return True
+
 if __name__ == "__main__":
     max_digits = 6
-    strobogrammatic_numbers = tim_strobogrammatic(max_digits)
-
-    strobogrammatic_numbers.sort(key=lambda x: (len(x), x))
-
-    print("Các số strobogrammatic nhỏ hơn 1 triệu là:")
+    # 1. Sinh danh sách số strobogrammatic dưới dạng chuỗi
+    all_strobo_strings = tim_strobogrammatic(max_digits)
     
-    for index, num in enumerate(strobogrammatic_numbers, 1):
-        print(f"{num:<8}", end="")
-        if index % 10 == 0:
-            print()           
+    # 2. Chuyển thành số nguyên, loại bỏ trùng lặp nếu có và lọc số nguyên tố
+    strobo_primes = []
+    for s in all_strobo_strings:
+        num = int(s)
+        if is_prime(num):
+            strobo_primes.append(num)
+            
+    strobo_primes.sort()
+
+    # 4. In kết quả đầu ra
+    print("Các số nguyên tố strobogrammatic nhỏ hơn 1 triệu là:")
+    print(", ".join(map(str, strobo_primes)))
+    print(f"\nTổng cộng có: {len(strobo_primes)} số.")     
